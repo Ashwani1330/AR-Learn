@@ -9,15 +9,21 @@ public class InteractivePart : MonoBehaviour
     private Color highlightColor = Color.yellow;
 
     private MeshRenderer meshRenderer;
-    // Store a list of original colors for all materials
     private List<Color> originalColors = new List<Color>();
+    private bool isHighlighted = false;
+
+    public float selectionRadius = 0.05f; // The "fatness" of our ray in meters
+    private Camera mainCamera;
+
+    // A static variable to track the currently highlighted part across all instances
+    private static InteractivePart currentlyHighlighted;
 
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         if (meshRenderer != null)
         {
-            // Loop through all materials and save each original color
+            // At the start, loop through all materials and save each original color
             foreach (Material mat in meshRenderer.materials)
             {
                 originalColors.Add(mat.color);
@@ -25,35 +31,52 @@ public class InteractivePart : MonoBehaviour
         }
     }
 
-    public void OnPartHovered()
-    {
-        if (meshRenderer != null)
-        {
-            // Loop through all materials and apply the highlight
-            foreach (Material mat in meshRenderer.materials)
-            {
-                mat.color = highlightColor;
-                mat.EnableKeyword("_EMISSION");
-                mat.SetColor("_EmissionColor", highlightColor);
-            }
-        }
-    }
-
-    public void OnPartUnhovered()
-    {
-        if (meshRenderer != null)
-        {
-            // Loop through all materials and restore their original colors
-            for (int i = 0; i < meshRenderer.materials.Length; i++)
-            {
-                meshRenderer.materials[i].color = originalColors[i];
-                meshRenderer.materials[i].DisableKeyword("_EMISSION");
-            }
-        }
-    }
-
+    // This function will be called by the 'Select' (tap) event
     public void OnPartSelected()
     {
-        Debug.Log(partName + " was selected! This will trigger the AI tutor.");
+        // If another part is already highlighted, un-highlight it first
+        if (currentlyHighlighted != null && currentlyHighlighted != this)
+        {
+            currentlyHighlighted.Unhighlight();
+        }
+
+        // Toggle the highlight state for this part
+        if (!isHighlighted)
+        {
+            Highlight();
+        }
+        else
+        {
+            Unhighlight();
+        }
+    }
+
+    private void Highlight()
+    {
+        if (meshRenderer == null) return;
+
+        // Loop through all materials and apply the highlight color and glow
+        foreach (Material mat in meshRenderer.materials)
+        {
+            mat.color = highlightColor;
+            mat.EnableKeyword("_EMISSION");
+            mat.SetColor("_EmissionColor", highlightColor);
+        }
+        isHighlighted = true;
+        currentlyHighlighted = this;
+    }
+
+    private void Unhighlight()
+    {
+        if (meshRenderer == null) return;
+
+        // Loop through all materials and restore their original colors
+        for (int i = 0; i < meshRenderer.materials.Length; i++)
+        {
+            meshRenderer.materials[i].color = originalColors[i];
+            meshRenderer.materials[i].DisableKeyword("_EMISSION");
+        }
+        isHighlighted = false;
+        currentlyHighlighted = null;
     }
 }
