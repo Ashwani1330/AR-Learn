@@ -4,6 +4,7 @@ using System.Collections.Generic; // Required to use Lists
 public class InteractivePart : MonoBehaviour
 {
     public string partName;
+    private APIManager apiManager;
 
     [SerializeField]
     private Color highlightColor = Color.yellow;
@@ -11,9 +12,6 @@ public class InteractivePart : MonoBehaviour
     private MeshRenderer meshRenderer;
     private List<Color> originalColors = new List<Color>();
     private bool isHighlighted = false;
-
-    public float selectionRadius = 0.05f; // The "fatness" of our ray in meters
-    private Camera mainCamera;
 
     // A static variable to track the currently highlighted part across all instances
     private static InteractivePart currentlyHighlighted;
@@ -29,6 +27,7 @@ public class InteractivePart : MonoBehaviour
                 originalColors.Add(mat.color);
             }
         }
+        apiManager = FindObjectOfType<APIManager>();
     }
 
     // This function will be called by the 'Select' (tap) event
@@ -48,6 +47,11 @@ public class InteractivePart : MonoBehaviour
         else
         {
             Unhighlight();
+        }
+
+        if (apiManager != null)
+        {
+            apiManager.SetPartContext(partName);
         }
     }
 
