@@ -27,6 +27,65 @@ public class APIManager : MonoBehaviour
 
     private string currentPartContext = "";
 
+    void Awake()
+    {
+        // Optional: Initialize with default values if no dynamic assignment is done yet
+        if (infoPanel == null)
+        {
+            Debug.LogWarning("infoPanel not assigned dynamically yet. Call InitializeUIFromPrefab to set it up.");
+        }
+    }
+
+    /// <summary>
+    /// Dynamically initializes UI elements from the spawned prefab's Canvas.
+    /// </summary>
+    /// <param name="prefabInstance">The spawned jet-engine prefab instance.</param>
+    public void InitializeUIFromPrefab(GameObject prefabInstance)
+    {
+        if (prefabInstance == null)
+        {
+            Debug.LogError("Prefab instance is null. Cannot initialize UI.");
+            return;
+        }
+
+        // Find the Canvas in the prefab instance
+        Transform canvasTransform = prefabInstance.transform.Find("Canvas");
+        if (canvasTransform != null)
+        {
+            // Find the Panel
+            Transform panelTransform = canvasTransform.Find("Panel");
+            if (panelTransform != null)
+            {
+                infoPanel = panelTransform.gameObject;
+
+                // Assign text fields by name
+                Transform partNameT = panelTransform.Find("Part_Name_Text");
+                if (partNameT != null) partNameText = partNameT.GetComponent<TextMeshProUGUI>();
+
+                Transform descT = panelTransform.Find("Description_Text");
+                if (descT != null) descriptionText = descT.GetComponent<TextMeshProUGUI>();
+            }
+            else
+            {
+                Debug.LogError("Panel not found under Canvas in the prefab instance.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Canvas not found in the prefab instance.");
+        }
+
+        // Ensure AudioSource is assigned if not already set
+        if (replyAudioSource == null)
+        {
+            replyAudioSource = GetComponent<AudioSource>();
+            if (replyAudioSource == null)
+            {
+                Debug.LogWarning("No AudioSource found on APIManager or prefab instance.");
+            }
+        }
+    }
+
     #region Public Interface
 
     /// <summary>

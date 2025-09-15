@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JetEngineScene.unity
     guid: 1d281e849e327384da823238bd64ca8a
+  - enabled: 0
+    path: Assets/Scenes/RefractionScene.unity
+    guid: 9649f781eddc0344d9dd74e78bc8d637
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
