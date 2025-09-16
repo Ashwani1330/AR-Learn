@@ -1,0 +1,40 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MenuScene.uss?fileID=7433441132597879392&amp;guid=f561e3a925b564044b3724dada495501&amp;type=3#MenuScene" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="main-content" class="main-content">
+            <ui:Label text="Choose a Model" class="title" />
+            <ui:VisualElement name="grid-container" class="grid-container">
+                <ui:Button name="model-card-1" class="model-card">
+                    <ui:Image image="Assets/UI/Images/refraction.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/refraction.png?fileID=2800000&amp;guid=8065103429f32be4385e5fb738bc022e&amp;type=3#refraction&quot;);" />
+                    <ui:Label text="Model 1: Refraction" class="card-caption" />
+                </ui:Button>
+                <ui:Button name="model-card-2" class="model-card">
+                    <ui:Image image="Assets/UI/Images/model2.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/heart.jpg?fileID=2800000&amp;guid=e493198fe36777442b87786aac04b667&amp;type=3#heart&quot;); height: 123px;" />
+                    <ui:Label text="Model 2: Heart" class="card-caption" />
+                </ui:Button>
+                <ui:Button name="model-card-3" class="model-card">
+                    <ui:Image image="Assets/UI/Images/model3.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/jet_engine.jpg?fileID=2800000&amp;guid=f1f3a5c36ba4c8b469528a64c845721b&amp;type=3#jet_engine&quot;);" />
+                    <ui:Label text="Model 3: Engine" class="card-caption" />
+                </ui:Button>
+                <ui:Button name="model-card-4" class="model-card">
+                    <ui:Image image="Assets/UI/Images/model4.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/circuit.png?fileID=2800000&amp;guid=33a4bedc5389454408bd96cdec84b09f&amp;type=3#circuit&quot;);" />
+                    <ui:Label text="Model 4: Circuit" class="card-caption" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-nav" class="bottom-nav" style="flex-direction: row; background-color: rgba(188, 188, 188, 0.55);">
+            <ui:Button name="analytics-btn" class="nav-btn active">
+                <ui:Image image="Assets/UI/Icons/analytics-icon.png" class="nav-icon" style="background-image: url(&quot;project://database/Assets/UI/Images/open_book.png?fileID=21300000&amp;guid=ce03909fb7746e64d8293dc86e9755c9&amp;type=3#open_book&quot;); background-color: rgba(103, 58, 183, 0); width: 24px;" />
+                <ui:Label text="Book-Scan" class="nav-label" />
+            </ui:Button>
+            <ui:Button name="home-btn" class="nav-btn">
+                <ui:Image image="Assets/UI/Icons/home-icon.png" class="nav-icon" style="background-image: url(&quot;project://database/Assets/UI/Images/home.png?fileID=2800000&amp;guid=ab4802a313195a54bb949f24ed961d5f&amp;type=3#home&quot;); background-color: rgba(117, 117, 117, 0);" />
+                <ui:Label text="Home" class="nav-label" />
+            </ui:Button>
+            <ui:Button name="profile-btn" class="nav-btn">
+                <ui:Image image="Assets/UI/Icons/profile-icon.png" class="nav-icon" style="background-image: url(&quot;project://database/Assets/UI/Images/profile.png?fileID=2800000&amp;guid=b0d24e789f3bf3f4c9f132f16823c55c&amp;type=3#profile&quot;); background-color: rgba(117, 117, 117, 0);" />
+                <ui:Label text="Profile" class="nav-label" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

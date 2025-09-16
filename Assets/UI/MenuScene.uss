@@ -1,0 +1,138 @@
+.root {
+    flex-direction: column;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(33, 33, 33);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.model-card {
+    width: 48%;
+    min-width: 140px;
+    height: 200px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-card:hover {
+    transform: ;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.model-card:active {
+    transform: ;
+}
+
+.card-image {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: rgb(224, 224, 224);
+}
+
+.card-caption {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(66, 66, 66);
+    text-align: center;
+    flex: 1;
+}
+
+.bottom-nav {
+    display: flex;
+    height: 70px;
+    background-color: white;
+    border-top: 1px solid rgb(224, 224, 224);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    height: 100%;
+}
+
+.nav-btn.active {
+    color: rgb(103, 58, 183);
+}
+
+.nav-btn:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    background-color: rgb(117, 117, 117);
+}
+
+.nav-btn.active .nav-icon {
+    background-color: rgb(103, 58, 183);
+}
+
+.nav-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgb(117, 117, 117);
+    text-align: center;
+}
+
+.nav-btn.active .nav-label {
+    color: rgb(103, 58, 183);
+}
+
+.analytics-screen {
+    display: none;
+}
+
+.home-screen {
+    display: flex;
+}
+
+.profile-screen {
+    display: none;
+}
+
+.unity-text-element {
+}

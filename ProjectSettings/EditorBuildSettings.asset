@@ -8,15 +8,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 4755b35b590504809a7525fd2109c2e2
-  - enabled: 0
-    path: Assets/Scenes/HeartScene.unity
-    guid: 64f9f043f3c6f9a4298816b78e7b4042
+  - enabled: 1
+    path: Assets/Scenes/StartAuthScene.unity
+    guid: 9f275547b9f712a4bb7d791eb0e0d52a
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: ddfbecb24da809c468b7f51a3877e140
   - enabled: 1
     path: Assets/Scenes/JetEngineScene.unity
     guid: 1d281e849e327384da823238bd64ca8a
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/HeartScene.unity
+    guid: 33ab68e7d78ae014f8ad70c4e957d50d
+  - enabled: 1
     path: Assets/Scenes/RefractionScene.unity
     guid: 9649f781eddc0344d9dd74e78bc8d637
+  - enabled: 1
+    path: Assets/Scenes/BookScanScene.unity
+    guid: fcb05484715b41548a98caa1a76bae3f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}

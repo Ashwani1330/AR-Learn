@@ -1,0 +1,83 @@
+/* Root container */
+.root {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+
+/* Welcome text */
+.welcome-text {
+  font-size: 32px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Card container */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+  gap: 16px;
+}
+
+/* Enhanced text fields */
+.enhanced-text-field {
+  border-radius: 20px; /* Increased for more rounded corners */
+  background: linear-gradient(135deg, #E0E0E0, #F5F5F5); /* Subtle gradient */
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #B0BEC5; /* Light border for definition */
+  transition: all 0.3s ease; /* Smooth hover effect */
+  min-height: 48px;
+}
+
+.enhanced-text-field:hover {
+  background: linear-gradient(135deg, #D5D5D5, #F0F0F0); /* Slightly darker on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.enhanced-text-field Label {
+  color: #424242;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.enhanced-text-field TextInput {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-top: 4px;
+  font-size: 16px;
+  color: #212121;
+}
+
+/* Login button */
+.login-button {
+  background-color: #673AB7; /* Deeper purple */
+  color: white;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  min-height: 48px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #5E35B1;
+}
+
+.login-button:active {
+  background-color: #512DA8;
+}

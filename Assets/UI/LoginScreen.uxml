@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/LoginScreen.uss?fileID=7433441132597879392&amp;guid=6ab07ed4d2fd7c643a4a4f859c72de83&amp;type=3#LoginScreen" />
+    <ui:VisualElement name="root" style="flex-direction: column; align-items: center; justify-content: center; height: 100%; background-color: rgb(245, 245, 245); top: 0;">
+        <ui:Label text="Welcome!" class="welcome-text" />
+        <ui:VisualElement class="card">
+            <ui:TextField label="Email" name="Email" keyboard-type="EmailAddress" class="rounded-text-field" style="flex-direction: column; flex-basis: 0%; flex-grow: 1;" />
+            <ui:TextField label="Password" type="password" keyboard-type="Default" multiline="false" password="true" name="Password" class="rounded-text-field" style="flex-direction: column; flex-wrap: nowrap; flex-basis: 0%; flex-grow: 1; margin-bottom: 10px;" />
+            <ui:Button text="Login" name="Login" class="login-button" style="margin-top: 10px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
