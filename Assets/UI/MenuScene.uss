@@ -39,16 +39,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;            /* wrap to new rows */
-    justify-content: space-between;
-    align-items: flex-start;
-    row-gap: 12px;              /* vertical gap between rows */
-    column-gap: 12px;           /* gap between columns */
+    column-gap: 2%;
+    row-gap: 12px;
     width: 100%;
+    justify-content: flex-start;
 }
 
 /* Model card - target 2 columns by default (48% + gaps) */
 .model-card {
-    width: 48%;
+    width: 47%;
     height: 200px;
     background-color: white;
     border-radius: 12px;
