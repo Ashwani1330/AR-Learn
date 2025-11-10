@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Quiz/QuizScreen.uss?fileID=7433441132597879392&amp;guid=4536f0ea1ae635b4f9928f97b23b229c&amp;type=3#QuizScreen" />
+    <ui:VisualElement name="quiz-root" class="quiz-root">
+        <ui:VisualElement name="quiz-card" class="quiz-card">
+            <ui:Label name="quiz-title" text="Quiz: Jet Engine" class="quiz-title" />
+            <ui:Label name="question-counter" text="Question 1 of 5" class="question-counter" />
+            <ui:Label name="question-stem" text="Loading question..." class="question-stem" style="flex-wrap: wrap;" />
+            <ui:VisualElement name="options-container" class="options-container">
+                <ui:Button name="option-1" text="Option A" class="option-button" />
+                <ui:Button name="option-2" text="Option B" class="option-button" />
+                <ui:Button name="option-3" text="Option C" class="option-button" />
+                <ui:Button name="option-4" text="Option D" class="option-button" />
+            </ui:VisualElement>
+            <ui:Button name="next-btn" text="Next" class="next-btn" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
