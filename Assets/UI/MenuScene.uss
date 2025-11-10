@@ -1,82 +1,109 @@
+/* MenuScene.uss
+   Cleaned & fixed USS for a responsive 2-column grid in Unity UIElements.
+   - Keeps 2 cards per row on most phones (48% width + gaps)
+   - Stacks to 1 column on very small screens
+   - Optional 3-column on large/tablet screens
+   - Removed unsupported/ambiguous properties and used standard CSS-like USS
+*/
+
 .root {
+    /* container root */
     flex-direction: column;
     height: 100%;
     background-color: rgb(245, 245, 245);
 }
 
+/* main content area that scrolls if content overflows */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     padding: 20px;
-    overflow-y: auto;
+    padding-bottom: 100px;
+    overflow-y: auto; /* use vertical auto-scroll */
 }
 
+/* page title */
 .title {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: bold;
     color: rgb(33, 33, 33);
     margin-bottom: 20px;
-    text-align: center;
+    -unity-text-align: center;
 }
 
-#grid-container {
+/* Grid container (use class selector - keeps behavior consistent with UXML that sets class="grid-container") */
+.grid-container,
+#grid-container { /* include both for safety if UXML uses a name/id */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;            /* wrap to new rows */
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: 12px;              /* vertical gap between rows */
+    column-gap: 12px;           /* gap between columns */
     width: 100%;
-    padding: 10px;
 }
 
+/* Model card - target 2 columns by default (48% + gaps) */
 .model-card {
     width: 48%;
-    min-width: 140px;
     height: 200px;
     background-color: white;
     border-radius: 12px;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    /* small visual polish (transition will be ignored on some UI Toolkit versions but safe to include) */
+    transition: transform 140ms ease-in-out;
 }
 
+/* hover/press feedback (may be ignored in some runtime platforms but harmless) */
 .model-card:hover {
-    transform: ;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.03);
 }
 
 .model-card:active {
-    transform: ;
+    transform: scale(0.98);
 }
 
+/* image inside card */
 .card-image {
     width: 100%;
     height: 120px;
     border-radius: 8px;
     margin-bottom: 8px;
     background-color: rgb(224, 224, 224);
+    background-size: cover;
+    background-position: center;
 }
 
+/* caption under image */
 .card-caption {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: rgb(66, 66, 66);
-    text-align: center;
-    flex: 1;
+    -unity-text-align: center;
+    margin-top: 6px;
 }
 
+/* bottom navigation bar */
 .bottom-nav {
     display: flex;
     height: 70px;
     background-color: white;
-    border-top: 1px solid rgb(224, 224, 224);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    border-top-width: 1px;
+    border-top-color: rgb(224, 224, 224);
     justify-content: space-around;
     align-items: center;
     padding: 0 20px;
 }
 
+/* nav button */
 .nav-btn {
     display: flex;
     flex-direction: column;
@@ -84,22 +111,24 @@
     justify-content: center;
     flex: 1;
     padding: 8px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.2s ease;
     min-width: 60px;
     height: 100%;
 }
 
+/* active state for nav button (text/icon color) */
 .nav-btn.active {
     color: rgb(103, 58, 183);
 }
 
+/* hover state for nav buttons */
 .nav-btn:hover {
     background-color: rgb(245, 245, 245);
 }
 
+/* icons inside nav */
 .nav-icon {
     width: 24px;
     height: 24px;
@@ -107,21 +136,25 @@
     background-color: rgb(117, 117, 117);
 }
 
+/* active icon color */
 .nav-btn.active .nav-icon {
     background-color: rgb(103, 58, 183);
 }
 
+/* nav label under icon */
 .nav-label {
     font-size: 10px;
-    font-weight: 500;
+    font-weight: normal;
     color: rgb(117, 117, 117);
-    text-align: center;
+    -unity-text-align: center;
 }
 
+/* active label color */
 .nav-btn.active .nav-label {
     color: rgb(103, 58, 183);
 }
 
+/* screen visibility helpers */
 .analytics-screen {
     display: none;
 }
@@ -134,5 +167,24 @@
     display: none;
 }
 
-.unity-text-element {
+/* placeholder for any Unity text elements you want to target later */
+.unity-text-element { }
+
+/* --------------------
+   Responsive tweaks
+   -------------------- */
+
+/* Very small narrow devices -> use single column so cards are readable */
+@media (max-width: 380px) {
+    .model-card {
+        width: 100%;
+    }
+}
+
+/* Wider/tablet devices -> optional 3-column layout (uncomment to enable) */
+/* Example threshold: tablets / large phones */
+@media (min-width: 900px) {
+    .model-card {
+        width: 30%;
+    }
 }

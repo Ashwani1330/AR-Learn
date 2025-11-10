@@ -3,8 +3,8 @@
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="main-content" class="main-content">
             <ui:Label text="Choose a Model" class="title" />
-            <ui:VisualElement name="grid-container" class="grid-container">
-                <ui:Button name="model-card-1" class="model-card">
+            <ui:VisualElement name="grid-container" class="grid-container" style="-unity-slice-type: sliced; align-content: flex-start; flex-direction: row; flex-wrap: wrap;">
+                <ui:Button name="model-card-1" class="model-card" style="-unity-background-scale-mode: stretch-to-fill;">
                     <ui:Image image="Assets/UI/Images/refraction.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/refraction.png?fileID=2800000&amp;guid=8065103429f32be4385e5fb738bc022e&amp;type=3#refraction&quot;);" />
                     <ui:Label text="Model 1: Refraction" class="card-caption" />
                 </ui:Button>
@@ -16,7 +16,7 @@
                     <ui:Image image="Assets/UI/Images/model3.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/jet_engine.jpg?fileID=2800000&amp;guid=f1f3a5c36ba4c8b469528a64c845721b&amp;type=3#jet_engine&quot;);" />
                     <ui:Label text="Model 3: Engine" class="card-caption" />
                 </ui:Button>
-                <ui:Button name="model-card-4" class="model-card">
+                <ui:Button name="model-card-4" class="model-card" style="position: relative;">
                     <ui:Image image="Assets/UI/Images/model4.png" class="card-image" style="background-image: url(&quot;project://database/Assets/UI/Images/circuit.png?fileID=2800000&amp;guid=33a4bedc5389454408bd96cdec84b09f&amp;type=3#circuit&quot;);" />
                     <ui:Label text="Model 4: Circuit" class="card-caption" />
                 </ui:Button>
