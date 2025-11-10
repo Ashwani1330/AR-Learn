@@ -225,6 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backendUrl: https://ar-learn-backend.onrender.com
+  currentModelId: jet-engine-v1
+  currentModelName: Jet Engine
+  currentScene: default_scene
   infoPanel: {fileID: 0}
   partNameText: {fileID: 0}
   descriptionText: {fileID: 0}

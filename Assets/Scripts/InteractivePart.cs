@@ -53,6 +53,10 @@ public class InteractivePart : MonoBehaviour
         {
             apiManager.SetPartContext(partName);
         }
+        else
+        {
+            Debug.Log("APIManager not found");
+        }
     }
 
     private void Highlight()

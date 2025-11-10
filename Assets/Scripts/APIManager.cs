@@ -16,6 +16,14 @@ public class APIManager : MonoBehaviour
     [Tooltip("The local IP address of the computer running the backend server.")]
     public string backendUrl = "https://4085dbf43b18.ngrok-free.app"; // IMPORTANT: Set your computer's IP here
 
+    [Header("Current Context")]
+    [Tooltip("ID of the 3D model currently being viewed.")]
+    public string currentModelId = "jet_engine_001";
+    [Tooltip("Human-readable name of the 3D model.")]
+    public string currentModelName = "Jet Engine"; // This will be overwritten by the prefab's name
+    [Tooltip("Current scene name if applicable.")]
+    public string currentScene = "default_scene";
+
     [Header("UI Elements")]
     public GameObject infoPanel;
     public TextMeshProUGUI partNameText;
@@ -47,6 +55,11 @@ public class APIManager : MonoBehaviour
             Debug.LogError("Prefab instance is null. Cannot initialize UI.");
             return;
         }
+
+        // This fulfills the request to use the spawned prefab's name as the model name.
+        // The .Replace() removes the "(Clone)" text Unity adds during instantiation.
+        this.currentModelName = prefabInstance.name.Replace("(Clone)", "").Trim();
+        Debug.Log($"[APIManager] Set currentModelName to: {this.currentModelName}");
 
         // Find the Canvas in the prefab instance
         Transform canvasTransform = prefabInstance.transform.Find("Canvas");
@@ -135,7 +148,13 @@ public class APIManager : MonoBehaviour
         string url = backendUrl + "/qa/ask-about-part-audio";
 
         // Create the JSON payload for the audio request
-        AskAboutPartAudioRequest payload = new AskAboutPartAudioRequest(currentPartContext, base64Audio);
+        AskAboutPartAudioRequest payload = new AskAboutPartAudioRequest(
+            currentModelId,
+            currentModelName,
+            currentPartContext,
+            currentScene,
+            base64Audio
+        );
         string jsonPayload = JsonUtility.ToJson(payload);
 
         using (UnityWebRequest request = CreatePostRequest(url, jsonPayload))
@@ -220,13 +239,19 @@ public class APIManager : MonoBehaviour
 [System.Serializable]
 public class AskAboutPartAudioRequest
 {
+    public string model_id;
+    public string model_name;
     public string part_name;
+    public string scene;
     public string audio_data; // The user's question, as Base64 encoded WAV audio
 
-    public AskAboutPartAudioRequest(string name, string audio)
+    public AskAboutPartAudioRequest(string model_id, string model_name, string part_name, string scene, string audio_data)
     {
-        this.part_name = name;
-        this.audio_data = audio;
+        this.model_id = model_id;
+        this.model_name = model_name;
+        this.part_name = part_name;
+        this.scene = scene;
+        this.audio_data = audio_data;
     }
 }
 
