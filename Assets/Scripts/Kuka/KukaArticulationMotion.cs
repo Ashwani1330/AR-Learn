@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class KukaArticulationMotion : MonoBehaviour
 {
@@ -221,6 +222,42 @@ public class KukaArticulationMotion : MonoBehaviour
     float ReadAngleDeg(ArticulationBody joint)
     {
         return joint.jointPosition[0] * Mathf.Rad2Deg;
+    }
+
+    public void MoveToAngles(float[] targetDeg)
+    {
+        if (targetDeg == null || targetDeg.Length < 6) return;
+
+        goals[0] = ClampToDrive(j1, targetDeg[0]);
+        goals[1] = ClampToDrive(j2, targetDeg[1]);
+        goals[2] = ClampToDrive(j3, targetDeg[2]);
+        goals[3] = ClampToDrive(j4, targetDeg[3]);
+        goals[4] = ClampToDrive(j5, targetDeg[4]);
+        goals[5] = ClampToDrive(j6, targetDeg[5]);
+
+        moving = true;
+    }
+
+    public float[] GetCurrentAnglesCopy()
+    {
+        UpdateCurrentAngles();
+        return new float[]
+        {
+            j1.currentDeg,
+            j2.currentDeg,
+            j3.currentDeg,
+            j4.currentDeg,
+            j5.currentDeg,
+            j6.currentDeg,
+        };
+    }
+
+
+    float ClampToDrive(JointChannel jc, float deg)
+    {
+        if (jc == null || jc.joint == null) return deg;
+        var drive = jc.joint.xDrive;
+        return Mathf.Clamp(deg, drive.lowerLimit, drive.upperLimit);
     }
 
     bool WasPressed(Key key)
